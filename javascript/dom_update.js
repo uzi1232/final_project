@@ -52,9 +52,14 @@ class GameDomUpdater {
             keyDOM.addEventListener("click", event => {
                 console.log("Value is ", event.target.innerText);
                 this.game.guess(event.target.innerText);
-                this.updateGameStatus();
+                this.updateGameStatus(event.target.innerText);
             })
         }
+    }
+
+    disableKeyboardKey(key) {
+        const keyDOM = document.getElementById(`${key}-btn`);
+        keyDOM.classList.add("disable-button");
     }
 
     updateWord() {
@@ -80,30 +85,33 @@ class GameDomUpdater {
         this.gameSatusParentContainerDOM.classList.add('hide-element');
     }
 
-    updateGameStatus() {
+    updateGameStatus(key) {
         if (this.game.getGameStatus() === GameStatus.WON) {
             console.log("GAME WON");
             this.updateWord();
             this.gameSatusParentContainerDOM.classList.remove('hide-element');
-            let innerHTML = `GAME WON !!`;
+            let innerHTML = `YOU WON THE GAME!!`;
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "success");
             this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
+            this.disableKeyboardKey(key);
         } 
         else if (this.game.getGameStatus() === GameStatus.LOST) {
             console.log("GAME LOST")
             this.gameSatusParentContainerDOM.classList.remove('hide-element');
-            let innerHTML = `GAME LOST :(`;
+            let innerHTML = `YOU LOST. Answer: ${this.game.expectedWord}`;
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "fail");
             this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
+            this.disableKeyboardKey(key);
         }
         else if (this.game.getGameStatus() === GameStatus.CORRECT) {
             this.updateWord();
-
+            this.disableKeyboardKey(key);
         }
         else if (this.game.getGameStatus() === GameStatus.INCORRECT) {
             this.updateHangmanImage(IMAGE_PREFIX + this.game.getGuessCount());
+            this.disableKeyboardKey(key);
         }        
     }
 
@@ -121,7 +129,6 @@ class GameDomUpdater {
             }
         }
         this.gameStatusElementDOM.style.left = `${this.gameStatusPosition}%`;
-        console.log("HAHAH", this.gameStatusDirectionLeft, this.gameStatusPosition)
 
         this.gameResultTimeHandler = setTimeout(() => {
             this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);

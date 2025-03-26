@@ -2,6 +2,15 @@
   display: none;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 5px;
+  height: 100vh;
+  background-color: #f9f7f3;
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -93,16 +102,20 @@ main #keyboard-container button:hover {
   background-color: #f9f7f3;
   color: #f7a072;
 }
+main #keyboard-container .disable-button, main #keyboard-container .disable-button:hover {
+  background-color: gray;
+  color: #f9f7f3;
+}
 main #game-status-wrapper-container {
   display: flex;
   flex-direction: column;
 }
 main #game-status-wrapper-container #game-status-container {
-  width: calc(100% - 100px);
+  width: calc(100% - 200px);
   position: relative;
 }
 main #game-status-wrapper-container #game-status-container h2 {
-  width: 100px;
+  width: 200px;
   position: relative;
 }
 main #game-status-wrapper-container #retry-game-button-container {
@@ -121,4 +134,9 @@ main #game-status-wrapper-container #retry-game-button-container button {
 main #game-status-wrapper-container #retry-game-button-container button:hover {
   background-color: #f9f7f3;
   color: #f7a072;
+}
+
+footer p {
+  padding: 10px;
+  margin: 5px;
 }

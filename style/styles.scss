@@ -7,6 +7,15 @@
     display: none;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 5px;
+    height: 100vh;
+    background-color: $backgroud_color;
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -77,6 +86,11 @@ main {
             background-color: $button-keyboard-text-color;
             color: $button-keyboard-color;
         }
+
+        .disable-button, .disable-button:hover {
+            background-color: gray;
+            color: $button-keyboard-text-color;
+        }
     }
 
     #game-status-wrapper-container {
@@ -84,11 +98,11 @@ main {
         flex-direction: column;
 
         #game-status-container {
-            width: calc(100% - 100px);
+            width: calc(100% - 200px);
             position: relative;
     
             h2 {
-                width: 100px;
+                width: 200px;
                 position: relative;
             }
         }
@@ -105,5 +119,11 @@ main {
             }
         }
     }
+}
 
+footer {
+    p {
+        padding: 10px;
+        margin: 5px;
+    }
 }
