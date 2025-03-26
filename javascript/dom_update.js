@@ -3,20 +3,28 @@ import { GameStatus } from "./hangman_game.js";
 
 const IMAGE_PREFIX = "hangman_";
 const VALID_KEYS = "abcdefghijklmnopqrstuvwxyz";
+const ANIMATION_TIMEOUT = 50;
 class GameDomUpdater {
-    constructor(game, gameResultAnimation) {
+    constructor(game) {
         this.game = game
         this.wordValueContainerDOM = document.getElementById("word-value-container");
         this.hintValueDOM = document.getElementById("hint-value");
         
         this.gameStatusElementDOM = document.getElementById("game-status");
-        this.gameSatusContainerDOM = document.getElementById("game-status-container");
+        this.gameSatusParentContainerDOM = document.getElementById("game-status-parent-container");
+        
         this.gameStatusDirectionLeft = true;
         this.gameStatusPosition = 0;
-        this.gameResultAnimation = gameResultAnimation;
+        this.gameResultAnimation = undefined;
+        this.gameResultTimeHandler = undefined;
         cancelAnimationFrame(this.gameResultAnimation);
         
         this.initializeGameDom();
+    }
+
+    stopAnimationFrame() {
+        cancelAnimationFrame(this.gameResultAnimation);
+        clearTimeout(this.gameResultTimeHandler)
     }
 
     initializeGameDom() {
@@ -43,12 +51,7 @@ class GameDomUpdater {
             const keyDOM = document.getElementById(`${c}-btn`);
             keyDOM.addEventListener("click", event => {
                 console.log("Value is ", event.target.innerText);
-                // console.log("Value is ", this.game);
-                const correctGuess = this.game.guess(event.target.innerText);
-                // if (correctGuess) {
-                //     this.updateWord();
-                // } 
-                // console.log("Correct guess is ", correctGuess )
+                this.game.guess(event.target.innerText);
                 this.updateGameStatus();
             })
         }
@@ -74,14 +77,14 @@ class GameDomUpdater {
     }
 
     initialGameStatus() {
-        this.gameSatusContainerDOM.classList.add('hide-element');
+        this.gameSatusParentContainerDOM.classList.add('hide-element');
     }
 
     updateGameStatus() {
         if (this.game.getGameStatus() === GameStatus.WON) {
             console.log("GAME WON");
             this.updateWord();
-            this.gameSatusContainerDOM.classList.remove('hide-element');
+            this.gameSatusParentContainerDOM.classList.remove('hide-element');
             let innerHTML = `GAME WON !!`;
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "success");
@@ -89,7 +92,7 @@ class GameDomUpdater {
         } 
         else if (this.game.getGameStatus() === GameStatus.LOST) {
             console.log("GAME LOST")
-            this.gameSatusContainerDOM.classList.remove('hide-element');
+            this.gameSatusParentContainerDOM.classList.remove('hide-element');
             let innerHTML = `GAME LOST :(`;
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "fail");
@@ -119,7 +122,11 @@ class GameDomUpdater {
         }
         this.gameStatusElementDOM.style.left = `${this.gameStatusPosition}%`;
         console.log("HAHAH", this.gameStatusDirectionLeft, this.gameStatusPosition)
-        this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
+
+        this.gameResultTimeHandler = setTimeout(() => {
+            this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
+        }, ANIMATION_TIMEOUT);
+
     }
     
 }

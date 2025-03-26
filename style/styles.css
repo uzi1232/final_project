@@ -93,13 +93,32 @@ main #keyboard-container button:hover {
   background-color: #f9f7f3;
   color: #f7a072;
 }
-main #game-status-container {
+main #game-status-wrapper-container {
+  display: flex;
+  flex-direction: column;
+}
+main #game-status-wrapper-container #game-status-container {
   width: calc(100% - 100px);
-  height: 100%;
-  /* move children relative to this container  */
   position: relative;
 }
-main #game-status-container h2 {
+main #game-status-wrapper-container #game-status-container h2 {
   width: 100px;
   position: relative;
+}
+main #game-status-wrapper-container #retry-game-button-container {
+  align-self: center;
+}
+main #game-status-wrapper-container #retry-game-button-container button {
+  background-color: #f7a072;
+  color: #f9f7f3;
+  border: 3px solid #eddea4;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px;
+}
+main #game-status-wrapper-container #retry-game-button-container button:hover {
+  background-color: #f9f7f3;
+  color: #f7a072;
 }

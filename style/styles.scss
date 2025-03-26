@@ -79,15 +79,30 @@ main {
         }
     }
 
-    #game-status-container {
-        width: calc(100% - 100px);
-        height: 100%;
-        /* move children relative to this container  */
-        position: relative;
+    #game-status-wrapper-container {
+        display: flex;
+        flex-direction: column;
 
-        h2 {
-            width: 100px;
+        #game-status-container {
+            width: calc(100% - 100px);
             position: relative;
+    
+            h2 {
+                width: 100px;
+                position: relative;
+            }
+        }
+
+        #retry-game-button-container {
+            align-self: center;
+            button {
+                @include button-style($button-keyboard-color, $button-keyboard-border-color, $button-keyboard-text-color, 5px, 100px);
+                padding: 5px;
+            }
+            button:hover {
+                background-color: $button-keyboard-text-color;
+                color: $button-keyboard-color;
+            }
         }
     }
 
