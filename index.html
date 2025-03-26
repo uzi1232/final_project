@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <script src="./javascript/main.js" defer type="module"></script>
+    <link rel="stylesheet" href="./style/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Hangman Game</h1>
+        <button id="new-game-btn">New Game</button>
+    </header>
+    <main>
+        <div id="img-container" class="main-container-element">
+            <div id="hangman-img"></div>
+            <div id="word-value-container"><p id="word-value"></p></div>
+            <div><p>Hint: <span id="hint-value"></span></p></div>
+        </div>
+        <div class="main-container-element" id="game-status-container">
+            <!-- <div id="game-status"> -->
+                <h2 id="game-status"></h2>
+            <!-- </div> -->
+        </div>
+        <div class="main-container-element">
+            <!-- <div><p id="word-value"></p></div>
+            <div><p id="hint-value"></p></div> -->
+            <!-- <div>
+                <button id="new-game-btn"></button>
+            </div> -->
+            <div id="keyboard-container"></div>
+        </div>
+    </main>
+    <footer>
+        <p>By Usman Yahya</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,105 @@
+.hide-element {
+  display: none;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 5px;
+  margin: 15px;
+}
+header button {
+  background-color: #f7a072;
+  color: #f9f7f3;
+  border: 3px solid #eddea4;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px;
+  margin: 10px;
+}
+header button:hover {
+  background-color: #f9f7f3;
+  color: #f7a072;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+main .main-container-element {
+  background-color: #f9f7f3;
+  color: #0fa3b1;
+  border-radius: 10px;
+  border: 10px solid #b5e2fa;
+  margin: 5px;
+  padding: 5px;
+}
+main #img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main #img-container #hangman-img {
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+main #img-container #hangman-img img {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+}
+main #img-container #word-value-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+main #img-container #word-value-container * {
+  background-color: #f9f7f3;
+  color: #0fa3b1;
+  border-radius: 10px;
+  border: 2px solid #b5e2fa;
+  margin: 2px;
+  padding: 2px;
+  padding: 5px;
+  font-size: 1.2rem;
+  height: 22px;
+  width: 15px;
+  text-align: center;
+}
+main #keyboard-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+main #keyboard-container button {
+  background-color: #f7a072;
+  color: #f9f7f3;
+  border: 3px solid #eddea4;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  width: 40px;
+  padding: 5px;
+  margin: 10px;
+}
+main #keyboard-container button:hover {
+  background-color: #f9f7f3;
+  color: #f7a072;
+}
+main #game-status-container {
+  width: calc(100% - 100px);
+  height: 100%;
+  /* move children relative to this container  */
+  position: relative;
+}
+main #game-status-container h2 {
+  width: 100px;
+  position: relative;
+}
