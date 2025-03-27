@@ -50,7 +50,6 @@ class GameDomUpdater {
         for (const c of VALID_KEYS) {
             const keyDOM = document.getElementById(`${c}-btn`);
             keyDOM.addEventListener("click", event => {
-                console.log("Value is ", event.target.innerText);
                 this.game.guess(event.target.innerText);
                 this.updateGameStatus(event.target.innerText);
             })
@@ -74,7 +73,6 @@ class GameDomUpdater {
     updateWord() {
         let innerHtml = "";
         const words = this.game.getGuessedWordArray();
-        console.log(words)
         words.forEach(element => {
             innerHtml += `<div>${element}</div>`
         });
@@ -96,7 +94,6 @@ class GameDomUpdater {
 
     updateGameStatus(key) {
         if (this.game.getGameStatus() === GameStatus.WON) {
-            console.log("GAME WON");
             this.updateWord();
             this.gameSatusParentContainerDOM.classList.remove('hide-element');
             let innerHTML = `YOU WON THE GAME!!`;
@@ -106,7 +103,6 @@ class GameDomUpdater {
             this.disableAllKeyboardKey();
         } 
         else if (this.game.getGameStatus() === GameStatus.LOST) {
-            console.log("GAME LOST")
             this.gameSatusParentContainerDOM.classList.remove('hide-element');
             let innerHTML = `YOU LOST. Answer: ${this.game.expectedWord}`;
             this.gameStatusElementDOM.innerHTML = innerHTML;
