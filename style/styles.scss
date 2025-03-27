@@ -76,6 +76,13 @@ main {
                 text-align: center;
             }
         }
+        #hint-value-container {
+            font-size: 12px;
+            text-align: center;
+            @media (min-width:500px) {
+                font-size: 15px;
+            }
+        }
     }
     
     #keyboard-container {

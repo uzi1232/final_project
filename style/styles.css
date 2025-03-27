@@ -91,6 +91,15 @@ main #img-container #word-value-container * {
   width: 15px;
   text-align: center;
 }
+main #img-container #hint-value-container {
+  font-size: 12px;
+  text-align: center;
+}
+@media (min-width: 500px) {
+  main #img-container #hint-value-container {
+    font-size: 15px;
+  }
+}
 main #keyboard-container {
   display: flex;
   flex-direction: row;

@@ -15,7 +15,7 @@ const GameStatus = {
 class HangmanGame {
     constructor(expectedWord, wordHint, maxAttempts=MAX_ATTEMPTS) {
         this.expectedWord = expectedWord;
-        this.wordHint = wordHint;
+        this.wordHint = "Hint: " + wordHint;
         this.maxAttempts = maxAttempts;
         this.#validateWord();
 
