@@ -59,7 +59,16 @@ class GameDomUpdater {
 
     disableKeyboardKey(key) {
         const keyDOM = document.getElementById(`${key}-btn`);
-        keyDOM.classList.add("disable-button");
+        keyDOM.classList.add("disable-button-style");
+        keyDOM.disabled = true;
+    }
+
+    disableAllKeyboardKey() {
+        for (const key of VALID_KEYS) {
+            const keyDOM = document.getElementById(`${key}-btn`);
+            keyDOM.classList.add("disable-button-style");
+            keyDOM.disabled = true;
+        }
     }
 
     updateWord() {
@@ -94,7 +103,7 @@ class GameDomUpdater {
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "success");
             this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
-            this.disableKeyboardKey(key);
+            this.disableAllKeyboardKey();
         } 
         else if (this.game.getGameStatus() === GameStatus.LOST) {
             console.log("GAME LOST")
@@ -103,7 +112,7 @@ class GameDomUpdater {
             this.gameStatusElementDOM.innerHTML = innerHTML;
             this.updateHangmanImage(IMAGE_PREFIX + "fail");
             this.gameResultAnimation = requestAnimationFrame(this.moveGameStatus);
-            this.disableKeyboardKey(key);
+            this.disableAllKeyboardKey();
         }
         else if (this.game.getGameStatus() === GameStatus.CORRECT) {
             this.updateWord();
@@ -114,7 +123,6 @@ class GameDomUpdater {
             this.disableKeyboardKey(key);
         }        
     }
-
 
     moveGameStatus = () => {
         if(this.gameStatusDirectionLeft === true){

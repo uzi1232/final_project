@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    @include vintage-game-font-style();
     max-width: 980px;
     margin: 0 auto;
     padding: 5px;
@@ -18,18 +18,25 @@ body {
 
 header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     padding: 5px;
     margin: 15px;
+
     button {
-        @include button-style($button-keyboard-color, $button-keyboard-border-color, $button-keyboard-text-color, 5px, 100px);
+        @include vintage-game-font-style();
+        @include button-style($button-color, $button-border-color, $button-text-color, 5px, 100px);
         padding: 5px;
         margin: 10px;
     }    
     button:hover {
-        background-color: $button-keyboard-text-color;
-        color: $button-keyboard-color;
+        background-color: $button-text-color;
+        color: $button-color;
+    }
+
+    @media (min-width:450px) {
+        flex-direction: row;
+        justify-content: space-between;
     }
 }
 
@@ -78,18 +85,19 @@ main {
         align-items: center;
         justify-content: center;
         button {
-            @include button-style($button-keyboard-color, $button-keyboard-border-color, $button-keyboard-text-color, 5px, 40px);
+            @include vintage-game-font-style();
+            @include button-style($button-color, $button-border-color, $button-text-color, 5px, 40px);
             padding: 5px;
             margin: 10px;
         }
         button:hover {
-            background-color: $button-keyboard-text-color;
-            color: $button-keyboard-color;
+            background-color: $button-text-color;
+            color: $button-color;
         }
 
-        .disable-button, .disable-button:hover {
+        .disable-button-style, .disable-button-style:hover {
             background-color: gray;
-            color: $button-keyboard-text-color;
+            color: $button-text-color;
         }
     }
 
@@ -110,12 +118,13 @@ main {
         #retry-game-button-container {
             align-self: center;
             button {
-                @include button-style($button-keyboard-color, $button-keyboard-border-color, $button-keyboard-text-color, 5px, 100px);
+                @include vintage-game-font-style();
+                @include button-style($button-color, $button-border-color, $button-text-color, 5px, 100px);
                 padding: 5px;
             }
             button:hover {
-                background-color: $button-keyboard-text-color;
-                color: $button-keyboard-color;
+                background-color: $button-text-color;
+                color: $button-color;
             }
         }
     }

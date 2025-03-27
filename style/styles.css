@@ -3,7 +3,9 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-style: normal;
   max-width: 980px;
   margin: 0 auto;
   padding: 5px;
@@ -13,12 +15,15 @@ body {
 
 header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   padding: 5px;
   margin: 15px;
 }
 header button {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-style: normal;
   background-color: #f7a072;
   color: #f9f7f3;
   border: 3px solid #eddea4;
@@ -32,6 +37,12 @@ header button {
 header button:hover {
   background-color: #f9f7f3;
   color: #f7a072;
+}
+@media (min-width: 450px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 main {
@@ -88,6 +99,9 @@ main #keyboard-container {
   justify-content: center;
 }
 main #keyboard-container button {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-style: normal;
   background-color: #f7a072;
   color: #f9f7f3;
   border: 3px solid #eddea4;
@@ -102,7 +116,7 @@ main #keyboard-container button:hover {
   background-color: #f9f7f3;
   color: #f7a072;
 }
-main #keyboard-container .disable-button, main #keyboard-container .disable-button:hover {
+main #keyboard-container .disable-button-style, main #keyboard-container .disable-button-style:hover {
   background-color: gray;
   color: #f9f7f3;
 }
@@ -122,6 +136,9 @@ main #game-status-wrapper-container #retry-game-button-container {
   align-self: center;
 }
 main #game-status-wrapper-container #retry-game-button-container button {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 200;
+  font-style: normal;
   background-color: #f7a072;
   color: #f9f7f3;
   border: 3px solid #eddea4;

@@ -17,3 +17,9 @@
     border-radius: $border-radius;
     width: $width;
 }
+
+@mixin vintage-game-font-style() {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 200;
+    font-style: normal;
+}
