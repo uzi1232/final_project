@@ -143,5 +143,5 @@ class GameDomUpdater {
         }, ANIMATION_TIMEOUT);
 
     }
-    
+
 }
